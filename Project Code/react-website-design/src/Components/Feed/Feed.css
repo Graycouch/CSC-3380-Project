@@ -1,3 +1,7 @@
-.Feed{
-    flex: 5.5;
+.Feed {
+    flex: 8;
+}
+
+.FeedWrapper {
+    padding: 20px;
 }

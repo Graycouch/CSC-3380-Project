@@ -60,38 +60,6 @@ export default function Leftbar() {
             <img className="LeftbarFriendImage" src="/assets/person/2.jpeg" alt="" />
             <span className="LeftbarFriendName">Potato</span>
           </li>
-          <li className="LeftbarFriend">
-            <img className="LeftbarFriendImage" src="/assets/person/2.jpeg" alt="" />
-            <span className="LeftbarFriendName">Potato</span>
-          </li>
-          <li className="LeftbarFriend">
-            <img className="LeftbarFriendImage" src="/assets/person/2.jpeg" alt="" />
-            <span className="LeftbarFriendName">Potato</span>
-          </li>
-          <li className="LeftbarFriend">
-            <img className="LeftbarFriendImage" src="/assets/person/2.jpeg" alt="" />
-            <span className="LeftbarFriendName">Potato</span>
-          </li>
-          <li className="LeftbarFriend">
-            <img className="LeftbarFriendImage" src="/assets/person/2.jpeg" alt="" />
-            <span className="LeftbarFriendName">Potato</span>
-          </li>
-          <li className="LeftbarFriend">
-            <img className="LeftbarFriendImage" src="/assets/person/2.jpeg" alt="" />
-            <span className="LeftbarFriendName">Potato</span>
-          </li>
-          <li className="LeftbarFriend">
-            <img className="LeftbarFriendImage" src="/assets/person/2.jpeg" alt="" />
-            <span className="LeftbarFriendName">Potato</span>
-          </li>
-          <li className="LeftbarFriend">
-            <img className="LeftbarFriendImage" src="/assets/person/2.jpeg" alt="" />
-            <span className="LeftbarFriendName">Potato</span>
-          </li>
-          <li className="LeftbarFriend">
-            <img className="LeftbarFriendImage" src="/assets/person/2.jpeg" alt="" />
-            <span className="LeftbarFriendName">Potato</span>
-          </li>
         </ul>
       </div>
     </div>
