@@ -1,3 +1,97 @@
 .Rightbar {
     flex: 3.5;
 }
+
+.RightbarWrapper {
+    padding: 40px 20px 0 0;
+}
+
+.ControllerContainer {
+    display: flex;
+    align-items: center;
+}
+
+.ControllerImage {
+    width: 30px;
+    height: 25px;
+    margin-right: 10px;
+}
+
+.ControllerText {
+    font-weight: 400;
+    font-size: 15;
+}
+
+.RightbarAd {
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 50px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.AdText {
+    font-weight: 400;
+    font-size: 15;
+}
+
+.AdBoldText {
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 15;
+}
+
+.RightbarTitle {
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.RightbarFriendList {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.RightbarTitle2 {
+    font-style: 18px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.RightbarInformation {
+    margin-bottom: 30px;
+}
+
+.RightbarInformationItem {
+    margin-bottom: 10px;
+}
+
+.RightbarInformationKey {
+    font-weight: 500;
+    margin-right: 7px;
+    color: #555;
+}
+
+.RightbarInformationValue {
+    font-weight: 400;
+}
+
+.RightbarFollowingList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.RightbarFollowing {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.RightbarFollowingImage {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+}

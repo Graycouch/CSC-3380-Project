@@ -1,4 +1,4 @@
-.TopbarContainer{
+.TopbarContainer {
     height: 50px;
     width: 100%;
     background-color: black;
@@ -6,13 +6,14 @@
     align-items: center;
     position: sticky;
     top: 0;
+    z-index: 999;
 }
 
-.TopbarLeft{
+.TopbarLeft {
     flex: 3;
 }
 
-.Logo{
+.Logo {
     font-size: 24px;
     margin-left: 20px;
     font-weight: bold;
@@ -20,11 +21,11 @@
     cursor: pointer;
 }
 
-.TopbarCenter{
+.TopbarCenter {
     flex: 5;
 }
 
-.SearchBar{
+.SearchBar {
     width: 100%;
     height: 30px;
     background-color: white;
@@ -33,21 +34,21 @@
     align-items: center;
 }
 
-.SearchIcon{
+.SearchIcon {
     font-size: 20px !important;
     margin-left: 10px;
 }
 
-.SearchInput{
+.SearchInput {
     border: none;
     width: 70%;
 }
 
-.SearchInput:focus{
+.SearchInput:focus {
     outline: none;
 }
 
-.TopbarRight{
+.TopbarRight {
     flex: 4;
     display: flex;
     align-items: center;
@@ -55,23 +56,23 @@
     color: white;
 }
 
-.TopbarLinks{
+.TopbarLinks {
     margin-right: 30px;
     font-style: 14px;
     cursor: pointer;
 }
 
-.TopbarIcons{
+.TopbarIcons {
     display: flex;
 }
 
-.TopbarIconItems{
+.TopbarIconItems {
     margin-right: 15px;
     cursor: pointer;
     position: relative;
 }
 
-.TopbarIconCounter{
+.TopbarIconCounter {
     width: 15px;
     height: 15px;
     background-color: red;
@@ -86,7 +87,7 @@
     font-size: 12px;
 }
 
-.TopbarProfilePicture{
+.TopbarProfilePicture {
     width: 32px;
     height: 32px;
     border-radius: 50%;

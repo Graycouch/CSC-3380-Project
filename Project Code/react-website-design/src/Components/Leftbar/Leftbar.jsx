@@ -10,6 +10,8 @@ import {
   School,
   VideogameAsset
 } from "@material-ui/icons"
+import { Users } from "../../DummyData"
+import CloseFriend from "../CloseFriend/CloseFriend"
 
 export default function Leftbar() {
   return (
@@ -54,12 +56,11 @@ export default function Leftbar() {
           </li>
         </ul>
         <button className="LeftbarButton">Show More</button>
-        <hr className="LeftbarHr"/>
+        <hr className="LeftbarHr" />
         <ul className="LeftbarFriendList">
-          <li className="LeftbarFriend">
-            <img className="LeftbarFriendImage" src="/assets/person/2.jpeg" alt="" />
-            <span className="LeftbarFriendName">Potato</span>
-          </li>
+          {Users.map((u) => (
+            <CloseFriend key={u.id} user={u} />
+          ))}
         </ul>
       </div>
     </div>
