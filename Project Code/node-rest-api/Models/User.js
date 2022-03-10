@@ -41,6 +41,12 @@ const UserSchema = new mongoose.Schema(
             default: ""
         },
 
+        discordLink: {
+            type: String,
+            max: 100,
+            default: ""
+        },
+
         profilePicture: {
             type: String,
             default: ""
@@ -68,17 +74,20 @@ const UserSchema = new mongoose.Schema(
 
         description: {
             type: String,
-            max: 100
+            max: 100,
+            default: ""
         },
 
         city: {
             type: String,
-            max: 50
+            max: 50,
+            default: ""
         },
 
         from: {
             type: String,
-            max: 50
+            max: 50,
+            default: ""
         },
 
         relationship: {

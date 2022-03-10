@@ -12,6 +12,7 @@ import {
 } from "@material-ui/icons"
 import { Users } from "../../DummyData"
 import CloseFriend from "../CloseFriend/CloseFriend"
+import { Link } from "react-router-dom"
 
 export default function Leftbar() {
   return (
@@ -20,42 +21,62 @@ export default function Leftbar() {
         <ul className="LeftbarList">
           <li className="LeftbarListItem">
             <RssFeed className="LeftbarIcon" />
-            <span className="LeftbarListItemText">Feed</span>
+            <Link to="/" style={{ textDecoration: "none" }}>
+              <span className="LeftbarListItemText">Feed</span>
+            </Link>
           </li>
           <li className="LeftbarListItem">
             <Chat className="LeftbarIcon" />
-            <span className="LeftbarListItemText">Chats</span>
+            <Link to="/" style={{ textDecoration: "none" }}>
+              <span className="LeftbarListItemText">Chats</span>
+            </Link>
           </li>
           <li className="LeftbarListItem">
             <PlayCircleFilledOutlined className="LeftbarIcon" />
-            <span className="LeftbarListItemText">Videos</span>
+            <a href="https://www.youtube.com/" style={{ textDecoration: "none" }} target="_blank" rel="noreferrer">
+              <span className="LeftbarListItemText">Videos</span>
+            </a>
           </li>
           <li className="LeftbarListItem">
             <Group className="LeftbarIcon" />
-            <span className="LeftbarListItemText">Groups</span>
+            <a href="https://discord.com/" style={{ textDecoration: "none" }} target="_blank" rel="noreferrer">
+              <span className="LeftbarListItemText">Groups</span>
+            </a>
           </li>
           <li className="LeftbarListItem">
             <Bookmark className="LeftbarIcon" />
-            <span className="LeftbarListItemText">Bookmarks</span>
+            <a href="https://z-lib.org/" style={{ textDecoration: "none" }} target="_blank" rel="noreferrer">
+              <span className="LeftbarListItemText">Bookmarks</span>
+            </a>
           </li>
           <li className="LeftbarListItem">
             <HelpOutline className="LeftbarIcon" />
-            <span className="LeftbarListItemText">Questions</span>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" style={{ textDecoration: "none" }} target="_blank" rel="noreferrer">
+              <span className="LeftbarListItemText">Questions</span>
+            </a>
           </li>
           <li className="LeftbarListItem">
             <VideogameAsset className="LeftbarIcon" />
-            <span className="LeftbarListItemText">Video Games</span>
+            <a href="https://store.steampowered.com/" style={{ textDecoration: "none" }} target="_blank" rel="noreferrer">
+              <span className="LeftbarListItemText">Video Games</span>
+            </a>
           </li>
           <li className="LeftbarListItem">
             <Event className="LeftbarIcon" />
-            <span className="LeftbarListItemText">Events</span>
+            <a href="https://www.eventsforgamers.com/" style={{ textDecoration: "none" }} target="_blank" rel="noreferrer">
+              <span className="LeftbarListItemText">Events</span>
+            </a>
           </li>
           <li className="LeftbarListItem">
             <School className="LeftbarIcon" />
-            <span className="LeftbarListItemText">Coaching</span>
+            <a href="https://www.gamersensei.com/" style={{ textDecoration: "none" }} target="_blank" rel="noreferrer">
+              <span className="LeftbarListItemText">Coaching</span>
+            </a>
           </li>
         </ul>
-        <button className="LeftbarButton">Show More</button>
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" style={{ textDecoration: "none" }} target="_blank" rel="noreferrer">
+          <button className="LeftbarButton">Show More</button>
+        </a>
         <hr className="LeftbarHr" />
         <ul className="LeftbarFriendList">
           {Users.map((u) => (
@@ -63,6 +84,6 @@ export default function Leftbar() {
           ))}
         </ul>
       </div>
-    </div>
+    </div >
   )
 }

@@ -72,6 +72,14 @@
     font-weight: 500;
 }
 
+.LoginButton:focus{
+    outline: none;
+}
+
+.LoginButton:disabled{
+    cursor: not-allowed;
+}
+
 .LoginForgot {
     text-align: center;
     color: black;

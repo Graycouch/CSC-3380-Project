@@ -32,11 +32,15 @@
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-    cursor: pointer;
 }
 
 .LeftbarIcon {
     margin-right: 15px;
+}
+
+.LeftbarListItemText {
+    color: black;
+    cursor: pointer;
 }
 
 .LeftbarButton {
