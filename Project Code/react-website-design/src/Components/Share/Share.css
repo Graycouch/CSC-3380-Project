@@ -50,19 +50,19 @@
 
 .ShareOptions {
     display: flex;
-    margin-left: 20px;
 }
 
 .ShareOption {
     display: flex;
     align-items: center;
-    margin-right: 40px;
+    margin-left: 11px;
+    margin-right: auto;
     cursor: pointer;
 }
 
 .ShareIcon {
     font-size: 18px;
-    margin-right: 3px;
+    margin-right: 2px;
 }
 
 .ShareOptionText {
@@ -72,7 +72,7 @@
 
 .ShareButton {
     border: none;
-    margin-left: 270px;
+    margin-left: auto;
     padding: 8px;
     border-radius: 5px;
     background-color: grey;

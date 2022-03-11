@@ -8,6 +8,12 @@ export default function Topbar() {
     const PublicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
     const { user } = useContext(AuthContext);
 
+    const handleClick = (e) => {
+        e.preventDefault();
+        localStorage.clear();
+        window.location.href = '/';
+    }
+
     return (
         <div className="TopbarContainer">
             <div className="TopbarLeft">
@@ -44,9 +50,15 @@ export default function Topbar() {
                         <span className="TopbarIconCounter">2</span>
                     </div>
                 </div>
-                <Link to={`/profile/${user.username}`}>
-                    <img src={user.profilePicture ? PublicFolder + user.profilePicture : PublicFolder + "person/noAvatar.png"} alt="" className="TopbarProfilePicture" />
-                </Link>
+                <ul className="Dropdown">
+                    <li>
+                        <img src={user.profilePicture ? PublicFolder + user.profilePicture : PublicFolder + "person/noAvatar.png"} alt="" className="TopbarProfilePicture" />
+                    </li>
+                    <ul className="DropdownMenu">
+                        <li className="DropdownItem"><Link to={`/profile/${user.username}`}>Profile Page</Link></li>
+                        <li className="DropdownItem"><button className="LogoutButton" onClick={handleClick}>Logout</button></li>
+                    </ul>
+                </ul>
             </div>
         </div>
     );

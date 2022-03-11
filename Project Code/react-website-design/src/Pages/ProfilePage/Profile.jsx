@@ -12,6 +12,20 @@ export default function Profile() {
     const [user, setUser] = useState({});
     const username = useParams().username;
 
+    const openForm = (e) => {
+        e.preventDefault();
+        document.getElementById("myForm").style.display = "block";
+    }
+
+    const closeForm = (e) => {
+        e.preventDefault();
+        document.getElementById("myForm").style.display = "none";
+    }
+
+    const submitHandler = () => {
+
+    }
+
     useEffect(() => {
         const fetchUser = async () => {
             const res = await axios.get(`/users?username=${username}`);
@@ -27,9 +41,29 @@ export default function Profile() {
                 <Leftbar />
                 <div className="ProfileRight">
                     <div className="ProfileRightTop">
+                        <div class="form-popup" id="myForm">
+                            <form class="form-container">
+                                <label for="ProfilePicture"><b>Profile Picture: </b>
+                                    <button type="submit" class="button profile">Change Profile Picture</button>
+                                </label>
+
+                                <label for="CoverPicture"><b>Cover Picture: </b>
+                                    <button type="submit" class="button cover">Change Cover Picture</button>
+                                </label>
+                                <label for="CoverPicture"><b>Description: </b>
+                                    <input type="text" placeholder="Enter Description"></input>
+                                </label>
+                                <button type="submit" class="button" onClick={submitHandler}>Submit</button>
+                                <button type="button" class="button cancel" onClick={closeForm}>Close</button>
+                            </form>
+                        </div>
                         <div className="ProfileCover">
-                            <img className="ProfileCoverPicture" src={user.coverPicture || PublicFolder+"person/noCover.jpg"} alt="" />
-                            <img className="ProfilePicture" src={user.profilePicture || PublicFolder+"person/noAvatar.png"} alt="" />
+                            <button className="CoverPictureButton" onClick={openForm}>
+                                <img className="ProfileCoverPicture" src={user.coverPicture ? PublicFolder + user.coverPicture : PublicFolder + "person/noCover.jpg"} alt="" />
+                            </button>
+                            <button className="ProfilePictureButton" onClick={openForm}>
+                                <img className="ProfilePicture" src={user.profilePicture ? PublicFolder + user.profilePicture : PublicFolder + "person/noAvatar.png"} alt="" />
+                            </button>
                         </div>
                         <div className="ProfileInformation">
                             <h4 className="ProfileInformationName">{user.username}</h4>

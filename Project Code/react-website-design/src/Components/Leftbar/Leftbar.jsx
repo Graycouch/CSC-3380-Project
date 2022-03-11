@@ -39,7 +39,7 @@ export default function Leftbar() {
           </li>
           <li className="LeftbarListItem">
             <Group className="LeftbarIcon" />
-            <a href="https://discord.com/" style={{ textDecoration: "none" }} target="_blank" rel="noreferrer">
+            <a href="https://reddit.com/" style={{ textDecoration: "none" }} target="_blank" rel="noreferrer">
               <span className="LeftbarListItemText">Groups</span>
             </a>
           </li>
@@ -51,7 +51,7 @@ export default function Leftbar() {
           </li>
           <li className="LeftbarListItem">
             <HelpOutline className="LeftbarIcon" />
-            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" style={{ textDecoration: "none" }} target="_blank" rel="noreferrer">
+            <a href="https://quora.com/" style={{ textDecoration: "none" }} target="_blank" rel="noreferrer">
               <span className="LeftbarListItemText">Questions</span>
             </a>
           </li>
