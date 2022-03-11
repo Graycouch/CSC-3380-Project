@@ -176,3 +176,22 @@
   .form-container .button:hover, .open-button:hover {
     opacity: 1;
   }
+
+  .RightbarFollowButton{
+      margin-top: 30px;
+      margin-bottom: 10px;
+      border: none;
+      background-color: grey;
+      color: white;
+      border-radius: 5px;
+      padding: 5px 10px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 500;
+  }
+
+  .RightbarFollowButton:focus{
+      outline: none;
+  }

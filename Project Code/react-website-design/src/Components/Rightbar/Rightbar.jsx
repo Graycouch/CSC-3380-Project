@@ -2,12 +2,48 @@ import "./Rightbar.css"
 import Online from "../Online/Online"
 import { Users } from "../../DummyData"
 import { axios } from "axios"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
 import { Link } from "react-router-dom"
+import { AuthContext } from "../../Context/AuthContext";
+import { Add, Remove } from "@material-ui/icons";
 
 export default function Rightbar({ user }) {
     const PublicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
     const [friends, setFriends] = useState([]);
+    const { user: currentUser, dispatch } = useContext(AuthContext);
+    const [followed, setFollowed] = useState(
+        currentUser.following.includes(user?.id)
+    );
+
+    useEffect(() => {
+        const getFriends = async () => {
+            try {
+                const friendList = await axios.get("/users/friends/" + user._id);
+                setFriends(friendList.data);
+            } catch (err) {
+                console.log(err);
+            }
+        };
+        getFriends();
+    }, [user]);
+
+    const handleClick = async () => {
+        try {
+            if (followed) {
+                await axios.put(`/users/${user._id}/unfollow`, {
+                    userId: currentUser._id,
+                });
+                dispatch({ type: "UNFOLLOW", payload: user._id });
+            } else {
+                await axios.put(`/users/${user._id}/follow`, {
+                    userId: currentUser._id,
+                });
+                dispatch({ type: "FOLLOW", payload: user._id });
+            }
+            setFollowed(!followed);
+        } catch (err) {
+        }
+    };
 
     const openRightbarForm = (e) => {
         e.preventDefault();
@@ -22,18 +58,6 @@ export default function Rightbar({ user }) {
     const submitHandler = () => {
 
     }
-
-    useEffect(() => {
-        const getFriends = async () => {
-            try {
-                const friendList = await axios.get("/users/friends/" + user._id);
-                setFriends(friendList.data);
-            } catch (err) {
-                console.log(err);
-            }
-        };
-        getFriends();
-    }, [user]);
 
     const HomeRightbar = () => {
         return (
@@ -67,6 +91,12 @@ export default function Rightbar({ user }) {
     const ProfileRightbar = () => {
         return (
             <>
+                {user.username !== currentUser.username && (
+                    <button className="RightbarFollowButton" onClick={handleClick}>
+                        {followed ? "Unfollow" : "Follow"}
+                        {followed ? <Remove /> : <Add />}
+                    </button>
+                )}
                 <h4 className="RightbarTitle2"><b>User Information</b></h4>
                 <div className="RightbarInformation">
                     <div class="form-popup" id="myRightbarForm">
