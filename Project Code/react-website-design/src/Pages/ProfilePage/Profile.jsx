@@ -3,7 +3,7 @@ import Leftbar from "../../Components/Leftbar/Leftbar";
 import Feed from "../../Components/Feed/Feed";
 import Rightbar from "../../Components/Rightbar/Rightbar";
 import "./Profile.css"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import axios from "axios"
 import { useParams } from "react-router";
 
@@ -11,6 +11,15 @@ export default function Profile() {
     const PublicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
     const [user, setUser] = useState({});
     const username = useParams().username;
+    const formDescription = useRef();
+
+    useEffect(() => {
+        const fetchUser = async () => {
+            const res = await axios.get(`/users?username=${username}`);
+            setUser(res.data);
+        }
+        fetchUser();
+    }, [username]);
 
     const openForm = (e) => {
         e.preventDefault();
@@ -23,16 +32,16 @@ export default function Profile() {
     }
 
     const submitHandler = () => {
-    
-    }
-
-    useEffect(() => {
-        const fetchUser = async () => {
-            const res = await axios.get(`/users?username=${username}`);
-            setUser(res.data);
+        try {
+            axios.put("/users/" + user._id,
+                {
+                    userId: user._id,
+                    description: formDescription.current.value
+                });
+        } catch (err) {
+            console.log(err);
         }
-        fetchUser();
-    }, [username]);
+    }
 
     return (
         <>
@@ -41,20 +50,20 @@ export default function Profile() {
                 <Leftbar />
                 <div className="ProfileRight">
                     <div className="ProfileRightTop">
-                        <div class="form-popup" id="myForm">
-                            <form class="form-container">
-                                <label for="ProfilePicture"><b>Profile Picture: </b>
-                                    <button type="submit" class="button profile">Change Profile Picture</button>
+                        <div className="form-popup" id="myForm">
+                            <form className="form-container">
+                                <label htmlFor="ProfilePicture"><b>Profile Picture: </b>
+                                    <button type="submit" className="button profile">Change Profile Picture</button>
                                 </label>
 
-                                <label for="CoverPicture"><b>Cover Picture: </b>
-                                    <button type="submit" class="button cover">Change Cover Picture</button>
+                                <label htmlFor="CoverPicture"><b>Cover Picture: </b>
+                                    <button type="submit" className="button cover">Change Cover Picture</button>
                                 </label>
-                                <label for="CoverPicture"><b>Description: </b>
-                                    <input type="text" placeholder="Enter Description"></input>
+                                <label htmlFor="CoverPicture"><b>Description: </b>
+                                    <input type="text" placeholder="Enter Description" ref={formDescription} />
                                 </label>
-                                <button type="submit" class="button" onClick={submitHandler}>Submit</button>
-                                <button type="button" class="button cancel" onClick={closeForm}>Close</button>
+                                <button type="submit" className="button" onClick={submitHandler}>Submit</button>
+                                <button type="button" className="button cancel" onClick={closeForm}>Close</button>
                             </form>
                         </div>
                         <div className="ProfileCover">

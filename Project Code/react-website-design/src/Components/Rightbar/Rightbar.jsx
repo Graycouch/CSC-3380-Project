@@ -2,7 +2,7 @@ import "./Rightbar.css"
 import Online from "../Online/Online"
 import { Users } from "../../DummyData"
 import { axios } from "axios"
-import { useEffect, useState, useContext } from "react"
+import { useEffect, useState, useContext, useRef } from "react"
 import { Link } from "react-router-dom"
 import { AuthContext } from "../../Context/AuthContext";
 import { Add, Remove } from "@material-ui/icons";
@@ -11,6 +11,7 @@ export default function Rightbar({ user }) {
     const PublicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
     const [friends, setFriends] = useState([]);
     const { user: currentUser, dispatch } = useContext(AuthContext);
+    const axios = require('axios');
     const [followed, setFollowed] = useState(
         currentUser.following.includes(user?.id)
     );
@@ -55,8 +56,30 @@ export default function Rightbar({ user }) {
         document.getElementById("myRightbarForm").style.display = "none";
     }
 
-    const submitHandler = () => {
+    const formCity = useRef();
+    const formFrom = useRef();
+    const formRelationship = useRef();
+    const formSteam = useRef();
+    const formPlaystation = useRef();
+    const formXbox = useRef();
+    const formDiscord = useRef();
 
+    const submitRightbarHandler = () => {
+        try {
+            axios.put("/users/" + user._id,
+                {
+                    userId: user._id,
+                    city: formCity.current.value,
+                    from: formFrom.current.value,
+                    relationship: formRelationship.current.value,
+                    steamLink: formSteam.current.value,
+                    playstationLink: formPlaystation.current.value,
+                    xboxLink: formXbox.current.value,
+                    discordLink: formDiscord.current.value
+                });
+        } catch (err) {
+            console.log(err);
+        }
     }
 
     const HomeRightbar = () => {
@@ -99,31 +122,31 @@ export default function Rightbar({ user }) {
                 )}
                 <h4 className="RightbarTitle2"><b>User Information</b></h4>
                 <div className="RightbarInformation">
-                    <div class="form-popup" id="myRightbarForm">
-                        <form class="form-container">
+                    <div className="form-popup" id="myRightbarForm">
+                        <form className="form-container">
                             <label><b>City: </b>
-                                <input type="text" placeholder="Enter The City You Live In"></input>
+                                <input type="text" placeholder="Enter The City That You Live In" ref={formCity} />
                             </label>
                             <label><b>From: </b>
-                                <input type="text" placeholder="Enter Where You're From"></input>
+                                <input type="text" placeholder="Enter Where You're From" ref={formFrom} />
                             </label>
                             <label><b>Relationship Status: </b>
-                                <input type="text" placeholder="Enter Your Relationship Status"></input>
+                                <input type="text" placeholder="Enter Your Relationship Status" ref={formRelationship} />
                             </label>
                             <label><b>Steam Username: </b>
-                                <input type="text" placeholder="Enter Your Steam Username"></input>
+                                <input type="text" placeholder="Enter Your Steam Username" ref={formSteam} />
                             </label>
                             <label><b>Playstation Username: </b>
-                                <input type="text" placeholder="Enter Your Playstation Username"></input>
+                                <input type="text" placeholder="Enter Your Playstation Username" ref={formPlaystation} />
                             </label>
                             <label><b>Xbox Username: </b>
-                                <input type="text" placeholder="Enter Your Xbox Username"></input>
+                                <input type="text" placeholder="Enter Your Xbox Username" ref={formXbox} />
                             </label>
                             <label><b>Discord Username: </b>
-                                <input type="text" placeholder="Enter Your Discord Username"></input>
+                                <input type="text" placeholder="Enter Your Discord Username" ref={formDiscord} />
                             </label>
-                            <button type="submit" class="button" onClick={submitHandler}>Submit</button>
-                            <button type="button" class="button cancel" onClick={closeRightbarForm}>Close</button>
+                            <button type="submit" className="button" onClick={submitRightbarHandler}>Submit</button>
+                            <button type="button" className="button cancel" onClick={closeRightbarForm}>Close</button>
                         </form>
                     </div>
                     <button className="RightbarButton" onClick={openRightbarForm}>
@@ -141,7 +164,7 @@ export default function Rightbar({ user }) {
                     <button className="RightbarButton" onClick={openRightbarForm}>
                         <div className="RightbarInformationItem">
                             <span className="RightbarInformationKey">Relationship Status:</span>
-                            <span className="RightbarInformationValue">{user.relationship === 1 ? "Single" : user.relationship === 2 ? "Married" : "-"}</span>
+                            <span className="RightbarInformationValue">{user.relationship === "" ? "-" : user.relationship}</span>
                         </div>
                     </button>
                     <button className="RightbarButton" onClick={openRightbarForm}>

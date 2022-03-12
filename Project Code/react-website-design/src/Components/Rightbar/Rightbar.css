@@ -163,16 +163,6 @@
     background-color: black;
   }
   
-  .form-container .profile {
-      margin-left: 5px;
-      width: 55%;
-    }
-  
-  .form-container .cover {
-      margin-left: 10px;
-      width: 55%;
-    }
-  
   .form-container .button:hover, .open-button:hover {
     opacity: 1;
   }
