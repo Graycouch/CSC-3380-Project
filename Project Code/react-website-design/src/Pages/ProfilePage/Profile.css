@@ -115,9 +115,15 @@
   background-color: black;
 }
 
-.form-container .profile {
-    margin-left: 5px;
-    width: 55%;
+.pictureButton {
+  background-color: grey;
+  color: white;
+  padding: 16px 20px;
+  cursor: pointer;
+  width: 55%;
+  margin-bottom: 10px;
+  align-items: center;
+  display: flex;
   }
 
 .form-container .cover {

@@ -48,7 +48,7 @@ export default function Share() {
                     <input placeholder={"What's on your mind " + user.username + "?"} className="ShareInput" ref={description} />
                 </div>
                 <hr className="ShareHr" />
-                {file && (
+                {file &&(
                     <div className="ShareImageContainer">
                         <img className="ShareImage" src={URL.createObjectURL(file)} alt="" />
                         <Cancel className="ShareCancelImage" onClick={() => setFile(null)} />

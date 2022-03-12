@@ -12,6 +12,8 @@ export default function Profile() {
     const [user, setUser] = useState({});
     const username = useParams().username;
     const formDescription = useRef();
+    const [profilePicture, setProfilePicture] = useState(null);
+    const [coverPicture, setcoverPicture] = useState(null);
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -31,12 +33,45 @@ export default function Profile() {
         document.getElementById("myForm").style.display = "none";
     }
 
-    const submitHandler = () => {
+    const submitProfileHandler = () => {
+        const dataProfile = new FormData();
+        const dataCover = new FormData();
+        var profileName = "";
+        var coverName = "";
+
+        if (profilePicture) {
+            const fileName = Date.now() + profilePicture.name;
+            dataProfile.append("name", fileName);
+            dataProfile.append("file", profilePicture);
+            profileName = fileName;
+
+            try {
+                axios.post("/upload", dataProfile);
+            } catch (err) {
+                console.log(err);
+            }
+        }
+
+        if (coverPicture) {
+            const fileName = Date.now() + coverPicture.name;
+            dataCover.append("name", fileName);
+            dataCover.append("file", coverPicture);
+            coverName = fileName;
+
+            try {
+                axios.post("/upload", dataCover);
+            } catch (err) {
+                console.log(err);
+            }
+        }
+
         try {
             axios.put("/users/" + user._id,
                 {
                     userId: user._id,
-                    description: formDescription.current.value
+                    description: formDescription.current.value,
+                    profilePicture: profileName,
+                    coverPicture: coverName
                 });
         } catch (err) {
             console.log(err);
@@ -52,17 +87,20 @@ export default function Profile() {
                     <div className="ProfileRightTop">
                         <div className="form-popup" id="myForm">
                             <form className="form-container">
-                                <label htmlFor="ProfilePicture"><b>Profile Picture: </b>
-                                    <button type="submit" className="button profile">Change Profile Picture</button>
+                                <label htmlFor="profilePicture"><b>Profile Picture: </b>
+                                    <span className="pictureButton">Change Profile Picture</span>
+                                    <input style={{ display: "none" }} type="file" id="profilePicture" accept=".png,.jpeg,.jpg" onChange={(e) => setProfilePicture(e.target.files[0])} />
                                 </label>
 
-                                <label htmlFor="CoverPicture"><b>Cover Picture: </b>
-                                    <button type="submit" className="button cover">Change Cover Picture</button>
+                                <label htmlFor="coverPicture"><b>Cover Picture: </b>
+                                    <span className="pictureButton">Change Cover Picture</span>
+                                    <input style={{ display: "none" }} type="file" id="coverPicture" accept=".png,.jpeg,.jpg" onChange={(e) => setcoverPicture(e.target.files[0])} />
                                 </label>
-                                <label htmlFor="CoverPicture"><b>Description: </b>
+
+                                <label><b>Description: </b>
                                     <input type="text" placeholder="Enter Description" ref={formDescription} />
                                 </label>
-                                <button type="submit" className="button" onClick={submitHandler}>Submit</button>
+                                <button type="submit" className="button" onClick={submitProfileHandler}>Submit</button>
                                 <button type="button" className="button cancel" onClick={closeForm}>Close</button>
                             </form>
                         </div>
