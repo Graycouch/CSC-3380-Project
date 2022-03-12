@@ -3,9 +3,10 @@ import Leftbar from "../../Components/Leftbar/Leftbar";
 import Feed from "../../Components/Feed/Feed";
 import Rightbar from "../../Components/Rightbar/Rightbar";
 import "./Profile.css"
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, useContext } from "react"
 import axios from "axios"
 import { useParams } from "react-router";
+import { AuthContext } from "../../Context/AuthContext"
 
 export default function Profile() {
     const PublicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -14,6 +15,12 @@ export default function Profile() {
     const formDescription = useRef();
     const [profilePicture, setProfilePicture] = useState(null);
     const [coverPicture, setcoverPicture] = useState(null);
+    const { user: currentUser } = useContext(AuthContext);
+    const [profilePictureName, setProfilePictureName] = useState("");
+
+    useEffect(() => {
+        setProfilePictureName(currentUser.profilePicture);
+    }, [currentUser])
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -73,6 +80,7 @@ export default function Profile() {
                     profilePicture: profileName,
                     coverPicture: coverName
                 });
+            setProfilePictureName(profileName);
         } catch (err) {
             console.log(err);
         }
@@ -85,25 +93,27 @@ export default function Profile() {
                 <Leftbar />
                 <div className="ProfileRight">
                     <div className="ProfileRightTop">
-                        <div className="form-popup" id="myForm">
-                            <form className="form-container">
-                                <label htmlFor="profilePicture"><b>Profile Picture: </b>
-                                    <span className="pictureButton">Change Profile Picture</span>
-                                    <input style={{ display: "none" }} type="file" id="profilePicture" accept=".png,.jpeg,.jpg" onChange={(e) => setProfilePicture(e.target.files[0])} />
-                                </label>
+                        {user.username === currentUser.username && (
+                            <div className="form-popup" id="myForm">
+                                <form className="form-container">
+                                    <label htmlFor="profilePicture"><b>Profile Picture: </b>
+                                        <span className="pictureButton">Change Profile Picture</span>
+                                        <input style={{ display: "none" }} type="file" id="profilePicture" accept=".png,.jpeg,.jpg" onChange={(e) => setProfilePicture(e.target.files[0])} />
+                                    </label>
 
-                                <label htmlFor="coverPicture"><b>Cover Picture: </b>
-                                    <span className="pictureButton">Change Cover Picture</span>
-                                    <input style={{ display: "none" }} type="file" id="coverPicture" accept=".png,.jpeg,.jpg" onChange={(e) => setcoverPicture(e.target.files[0])} />
-                                </label>
+                                    <label htmlFor="coverPicture"><b>Cover Picture: </b>
+                                        <span className="pictureButton">Change Cover Picture</span>
+                                        <input style={{ display: "none" }} type="file" id="coverPicture" accept=".png,.jpeg,.jpg" onChange={(e) => setcoverPicture(e.target.files[0])} />
+                                    </label>
 
-                                <label><b>Description: </b>
-                                    <input type="text" placeholder="Enter Description" ref={formDescription} />
-                                </label>
-                                <button type="submit" className="button" onClick={submitProfileHandler}>Submit</button>
-                                <button type="button" className="button cancel" onClick={closeForm}>Close</button>
-                            </form>
-                        </div>
+                                    <label><b>Description: </b>
+                                        <input type="text" placeholder="Enter Description" ref={formDescription} />
+                                    </label>
+                                    <button type="submit" className="button" onClick={submitProfileHandler}>Submit</button>
+                                    <button type="button" className="button cancel" onClick={closeForm}>Close</button>
+                                </form>
+                            </div>
+                        )}
                         <div className="ProfileCover">
                             <button className="CoverPictureButton" onClick={openForm}>
                                 <img className="ProfileCoverPicture" src={user.coverPicture ? PublicFolder + user.coverPicture : PublicFolder + "person/noCover.jpg"} alt="" />

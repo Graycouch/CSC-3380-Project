@@ -10,8 +10,8 @@ import { Add, Remove } from "@material-ui/icons";
 export default function Rightbar({ user }) {
     const PublicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
     const [friends, setFriends] = useState([]);
-    const { user: currentUser, dispatch } = useContext(AuthContext);
     const axios = require('axios');
+    const { user: currentUser, dispatch } = useContext(AuthContext);
     const [followed, setFollowed] = useState(
         currentUser.following.includes(user?.id)
     );
@@ -122,33 +122,35 @@ export default function Rightbar({ user }) {
                 )}
                 <h4 className="RightbarTitle2"><b>User Information</b></h4>
                 <div className="RightbarInformation">
-                    <div className="form-popup" id="myRightbarForm">
-                        <form className="form-container">
-                            <label><b>City: </b>
-                                <input type="text" placeholder="Enter The City That You Live In" ref={formCity} />
-                            </label>
-                            <label><b>From: </b>
-                                <input type="text" placeholder="Enter Where You're From" ref={formFrom} />
-                            </label>
-                            <label><b>Relationship Status: </b>
-                                <input type="text" placeholder="Enter Your Relationship Status" ref={formRelationship} />
-                            </label>
-                            <label><b>Steam Username: </b>
-                                <input type="text" placeholder="Enter Your Steam Username" ref={formSteam} />
-                            </label>
-                            <label><b>Playstation Username: </b>
-                                <input type="text" placeholder="Enter Your Playstation Username" ref={formPlaystation} />
-                            </label>
-                            <label><b>Xbox Username: </b>
-                                <input type="text" placeholder="Enter Your Xbox Username" ref={formXbox} />
-                            </label>
-                            <label><b>Discord Username: </b>
-                                <input type="text" placeholder="Enter Your Discord Username" ref={formDiscord} />
-                            </label>
-                            <button type="submit" className="button" onClick={submitRightbarHandler}>Submit</button>
-                            <button type="button" className="button cancel" onClick={closeRightbarForm}>Close</button>
-                        </form>
-                    </div>
+                    {user.username === currentUser.username && (
+                        <div className="form-popup" id="myRightbarForm">
+                            <form className="form-container">
+                                <label><b>City: </b>
+                                    <input type="text" placeholder="Enter The City That You Live In" ref={formCity} />
+                                </label>
+                                <label><b>From: </b>
+                                    <input type="text" placeholder="Enter Where You're From" ref={formFrom} />
+                                </label>
+                                <label><b>Relationship Status: </b>
+                                    <input type="text" placeholder="Enter Your Relationship Status" ref={formRelationship} />
+                                </label>
+                                <label><b>Steam Username: </b>
+                                    <input type="text" placeholder="Enter Your Steam Username" ref={formSteam} />
+                                </label>
+                                <label><b>Playstation Username: </b>
+                                    <input type="text" placeholder="Enter Your Playstation Username" ref={formPlaystation} />
+                                </label>
+                                <label><b>Xbox Username: </b>
+                                    <input type="text" placeholder="Enter Your Xbox Username" ref={formXbox} />
+                                </label>
+                                <label><b>Discord Username: </b>
+                                    <input type="text" placeholder="Enter Your Discord Username" ref={formDiscord} />
+                                </label>
+                                <button type="submit" className="button" onClick={submitRightbarHandler}>Submit</button>
+                                <button type="button" className="button cancel" onClick={closeRightbarForm}>Close</button>
+                            </form>
+                        </div>
+                    )}
                     <button className="RightbarButton" onClick={openRightbarForm}>
                         <div className="RightbarInformationItem">
                             <span className="RightbarInformationKey">City:</span>
