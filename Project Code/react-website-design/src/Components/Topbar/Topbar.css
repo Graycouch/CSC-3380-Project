@@ -48,6 +48,11 @@
     outline: none;
 }
 
+.friendSearch {
+    border: none;
+    width: 70%;
+}
+
 .TopbarRight {
     flex: 4;
     display: flex;

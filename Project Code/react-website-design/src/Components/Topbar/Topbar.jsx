@@ -1,17 +1,24 @@
 import "./Topbar.css"
 import { Search, Person, Chat, Notifications } from "@material-ui/icons"
 import { Link } from "react-router-dom"
-import { useContext } from "react"
+import { useContext, useRef } from "react"
 import { AuthContext } from "../../Context/AuthContext"
 
 export default function Topbar() {
     const PublicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
     const { user } = useContext(AuthContext);
+    const friendName = useRef();
 
     const handleClick = (e) => {
         e.preventDefault();
         localStorage.clear();
         window.location.href = '/';
+    }
+
+    const submitHandler = (e) => {
+        e.preventDefault();
+        window.location.href = "/profile/" + friendName.current.value;
+        return false;
     }
 
     return (
@@ -24,7 +31,9 @@ export default function Topbar() {
             <div className="TopbarCenter">
                 <div className="SearchBar">
                     <Search className="SearchIcon" />
-                    <input placeholder="Search for friends, post, or videos" className="SearchInput" />
+                    <form className="friendSearch" onSubmit={submitHandler}>
+                        <input type="text" placeholder="Search for friends, post, or videos" className="SearchInput" ref={friendName}/>
+                    </form>
                 </div>
             </div>
             <div className="TopbarRight">
