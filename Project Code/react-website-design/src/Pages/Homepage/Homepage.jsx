@@ -6,7 +6,7 @@ import "./Home.css";
 
 export default function Home() {
   return (
-    <>
+    <> 
       <Topbar />
       <div className="HomeContainer">
         <Leftbar />
