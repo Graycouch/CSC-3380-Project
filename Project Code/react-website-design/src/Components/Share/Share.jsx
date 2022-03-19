@@ -64,7 +64,7 @@ export default function Share() {
                         <label htmlFor="file" className="ShareOption">
                             <VideoLibrary htmlColor="grey" className="ShareIcon" />
                             <span className="ShareOptionText">Video</span>
-                            <input style={{ display: "none" }} type="file" id="file" accept=".png,.jpeg,.jpg" onChange={(e) => setFile(e.target.files[0])} />
+                            <input style={{ display: "none" }} type="file" id="file" accept=".mp4" onChange={(e) => setFile(e.target.files[0])} />
                         </label>
                         <div className="ShareOption">
                             <Label htmlColor="grey" className="ShareIcon" />
