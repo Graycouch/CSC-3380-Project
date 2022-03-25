@@ -7,6 +7,8 @@ const morgan = require("morgan");
 const routeUser = require("./Routes/users");
 const routeAuth = require("./Routes/auth");
 const routePost = require("./Routes/posts");
+const routeConversation = require("./Routes/conversations");
+const routeMessage = require("./Routes/messages");
 const multer = require("multer");
 const path = require("path");
 
@@ -48,6 +50,8 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
 app.use("/api/users", routeUser);
 app.use("/api/auth", routeAuth);
 app.use("/api/posts", routePost);
+app.use("/api/convsersations", routeConversation);
+app.use("/api/messages", routeMessage);
 
 // Connecting to the Backend Server
 app.listen(8800,
