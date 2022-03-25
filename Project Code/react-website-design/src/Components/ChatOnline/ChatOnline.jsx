@@ -1,4 +1,4 @@
-import "./chatOnline.css";
+import "./ChatOnline.css";
 
 export default function ChatOnline() {
     return(

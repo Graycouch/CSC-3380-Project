@@ -2,6 +2,7 @@ import "./messenger.css"
 import Topbar from "../../Components/Topbar/Topbar"
 import Conversation from "../../Components/Conversation/Conversation"
 import Message from "../../Components/Message/Message"
+import ChatOnline from "../../Components/ChatOnline/ChatOnline"
 
 export default function Messenger() {
     return(

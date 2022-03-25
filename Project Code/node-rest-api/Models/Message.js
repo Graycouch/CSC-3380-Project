@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const MessageSchema = new mongoose.Schema(
     {
        conversationId:{
-           typeString,
+           type: String,
         },
        sender:{
            type:String,
