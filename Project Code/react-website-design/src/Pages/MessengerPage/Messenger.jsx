@@ -1,10 +1,10 @@
 import "./messenger.css";
-import Topbar from "../../components/topbar/Topbar";
-import Conversation from "../../components/conversations/Conversation";
-import Message from "../../components/message/Message";
-import ChatOnline from "../../components/chatOnline/ChatOnline";
+import Topbar from "../../Components/Topbar/Topbar";
+import Conversation from "../../Components/Conversation/Conversation";
+import Message from "../../Components/Message/Message";
+import ChatOnline from "../../Components/ChatOnline/ChatOnline";
 import { useContext, useEffect, useRef, useState } from "react";
-import { AuthContext } from "../../context/AuthContext";
+import { AuthContext } from "../../Context/AuthContext";
 import axios from "axios";
 import { io } from "socket.io-client";
 
