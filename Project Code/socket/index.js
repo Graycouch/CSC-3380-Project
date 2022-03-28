@@ -14,6 +14,14 @@ const removeUser = (socketId) =>{
   users = users.filter((user) => user.socketId !== socketId);
 };
 
+socket.on("sendMessage", ({userId,receiverId,text})=>{
+  const user = getUser(userId);
+  io.to(user.socketId.emit("getMessage", {
+    userId,
+    text,
+  })
+});
+
 io.on("connection", (socket) => {
   console.log("a user connected.")
   socket.on("addUser",(userId) =>{
