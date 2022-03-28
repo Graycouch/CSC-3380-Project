@@ -21,11 +21,7 @@ export default function Messenger() {
          setSocket(io("ws://localhost:8900"))
     },[])
     
-    useEffect(()=>{
-        socket.on("welcome",message=>{
-          console.log(message)  
-        })
-    },[socket])
+    console.log(socket)
 
     useEffect(() =>{
         const getConversations = async ()=>{
