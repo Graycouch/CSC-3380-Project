@@ -57,6 +57,9 @@ export default function Messenger() {
         }
     };
 
+    useEffect(()=>{
+        ScrollRef.current?.scrollIntoView({ behavior : "smooth" });
+    }.[messages])
     return(
         <>
             <Topbar/>
@@ -78,7 +81,9 @@ export default function Messenger() {
                         <>
                         <div className="chatBoxTop">
                             {messages.map(m=>(
+                            <div ref = (scrollRef)>
                             <Message message={m} own={m.sender === user._id}/>
+                            </div>
                             ))}
                         </div>
                         <div className="chatBoxBottom">
