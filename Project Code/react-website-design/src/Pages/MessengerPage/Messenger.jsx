@@ -18,7 +18,14 @@ export default function Messenger() {
     const scrollRef = useRef();
        
     useEffect(()=>{
-        socket.current.emit("addUser",user._id)
+      socket.current = io("ws://localhost:8900");
+    },[]);
+    
+    useEffect(()=>{
+        socket.current.emit("addUser",user._id);
+        socket.current.on("getUsers",user=>{
+            console.log(users)
+        })
     },[user])
 
     useEffect(() =>{
