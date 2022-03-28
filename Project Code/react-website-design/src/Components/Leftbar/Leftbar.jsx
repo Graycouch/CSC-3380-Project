@@ -27,7 +27,7 @@ export default function Leftbar() {
           </li>
           <li className="LeftbarListItem">
             <Chat className="LeftbarIcon" />
-            <Link to="/" style={{ textDecoration: "none" }}>
+            <Link to="/messenger" style={{ textDecoration: "none" }}>
               <span className="LeftbarListItemText">Chats</span>
             </Link>
           </li>
