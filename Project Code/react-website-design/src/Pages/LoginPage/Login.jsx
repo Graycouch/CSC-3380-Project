@@ -9,14 +9,12 @@ export default function Login() {
     const email = useRef();
     const password = useRef();
 
-    const { user, isFetching, error, dispatch } = useContext(AuthContext);
+    const { isFetching, dispatch } = useContext(AuthContext);
 
     const handleClick = (e) => {
         e.preventDefault();
         LoginCall({ email: email.current.value, password: password.current.value }, dispatch);
     }
-
-    console.log(user);
 
     return (
         <div className="Login">
@@ -34,7 +32,7 @@ export default function Login() {
                         <button className="LoginButton" type="submit" disabled={isFetching}>{isFetching ? <CircularProgress color="white" size="20px" /> : "Log In"}</button>
                         <span className="LoginForgot">Forgot Password?</span>
                         <button className="LoginRegisterButton">
-                            <Link to="/register" style={{ textDecoration: "none"}} className="LoginRegisterLink">
+                            <Link to="/register" style={{ textDecoration: "none" }} className="LoginRegisterLink">
                                 {isFetching ? <CircularProgress color="white" size="20px" /> : "Create a New Account"}
                             </Link>
                         </button>
