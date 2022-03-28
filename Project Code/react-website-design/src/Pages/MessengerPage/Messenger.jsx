@@ -6,14 +6,20 @@ import ChatOnline from "../../Components/ChatOnline/ChatOnline"
 import { useContext, useEffect, useRef, useState } from "react"
 import { AuthContext } from "../../Context/AuthContext"
 import axios from "axios"
+import {io} from "socket.io-client"
 
 export default function Messenger() {
     const [conversation, setConversations] = useState([]);
     const [currentChat, setCurrentChat] = useState(null);
     const [messages, setMessages] = useState([])
     const [newMessage, setNewMessages] = useState("")
+    const [socket, setSocket] = useState(null)
     const {user} = useContext(AuthContext);
     const scrollRef = useRef();
+        setSocket(io("ws://localhost:8900"))
+    useEffect(()=>{
+        
+    },[])
 
     useEffect(() =>{
         const getConversations = async ()=>{
