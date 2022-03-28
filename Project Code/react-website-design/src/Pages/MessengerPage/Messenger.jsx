@@ -16,10 +16,16 @@ export default function Messenger() {
     const [socket, setSocket] = useState(null)
     const {user} = useContext(AuthContext);
     const scrollRef = useRef();
-        setSocket(io("ws://localhost:8900"))
+       
     useEffect(()=>{
-        
+         setSocket(io("ws://localhost:8900"))
     },[])
+    
+    useEffect(()=>{
+        socket.on("welcome",message=>{
+          console.log(message)  
+        })
+    },[socket])
 
     useEffect(() =>{
         const getConversations = async ()=>{
