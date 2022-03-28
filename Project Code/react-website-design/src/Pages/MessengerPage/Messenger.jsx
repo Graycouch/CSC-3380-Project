@@ -9,16 +9,23 @@ import axios from "axios"
 import {io} from "socket.io-client"
 
 export default function Messenger() {
-    const [conversation, setConversations] = useState([]);
+    const [conversations, setConversations] = useState([]);
     const [currentChat, setCurrentChat] = useState(null);
-    const [messages, setMessages] = useState([])
-  
+    const [messages, setMessages] = useState([]);
+    const [newMessage, setNewMessage] = useState("");
+    const [arrivalMessage, setArrivalMessage] = useState(null);
     const socket = useRef(io("ws://localhost:8900"))
     const {user} = useContext(AuthContext);
     const scrollRef = useRef();
        
     useEffect(()=>{
       socket.current = io("ws://localhost:8900");
+      socket.current.on("getMessage",data =>{
+          setArrivalMessage({
+              sender: data.senderId,
+              text: data.text,
+              createdAt: Date.now(),
+          })
     },[]);
     
     useEffect(()=>{
@@ -54,13 +61,22 @@ export default function Messenger() {
     getMessages();
     },[currentChat]);
 
-    console.handleSubmit = async (e) =>{
+    const handleSubmit = async (e) =>{
         e.preventDefault();
         const message = {
             sender: user._id,
             text: newMessage,
             conversationId: currentChat._id,
         };
+        
+        const receiverId = currentChat.members.find(members => member !== user._id)
+        
+        socket.current.emit("sendMessage", {
+            senderId: user._id,
+            receiverId,
+            text: newMessage
+        });
+        
         try{
             const res = await axios.post("/messages", message)
             setMessages([...messages,res.data])
