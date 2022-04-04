@@ -40,7 +40,7 @@ export default function Messenger() {
     socket.current.emit("addUser", user._id);
     socket.current.on("getUsers", (users) => {
       setOnlineUsers(
-        user.followings.filter((f) => users.some((u) => u.userId === f))
+        user.following.filter((f) => users.some((u) => u.userId === f))
       );
     });
   }, [user]);
@@ -139,14 +139,14 @@ export default function Messenger() {
               </>
             ) : (
               <span className="noConversationText">
-                Open a conversation to start a chat
+                Open a conversation to start a chat.
               </span>
             )}
           </div>
         </div>
         <div className="chatOnline">
           <div className="chatOnlineWrapper">
-            <ChatOnline  
+            <ChatOnline
               onlineUsers={onlineUsers}
               currentId={user._id}
               setCurrentChat={setCurrentChat}
