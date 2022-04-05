@@ -2,7 +2,7 @@ import "./messenger.css";
 import Topbar from "../../Components/Topbar/Topbar";
 import Conversation from "../../Components/Conversation/Conversation";
 import Message from "../../Components/Message/Message";
-import ChatOnline from "../../Components/ChatOnline/ChatOnline";
+import PeopleOnline from "../../Components/PeopleOnline/PeopleOnline";
 import { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../../Context/AuthContext";
 import axios from "axios";
@@ -144,9 +144,9 @@ export default function Messenger() {
             )}
           </div>
         </div>
-        <div className="chatOnline">
-          <div className="chatOnlineWrapper">
-            <ChatOnline
+        <div className="peopleOnline">
+          <div className="peopleOnlineWrapper">
+            <PeopleOnline
               onlineUsers={onlineUsers}
               currentId={user._id}
               setCurrentChat={setCurrentChat}
