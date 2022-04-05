@@ -1,6 +1,6 @@
 import "./messenger.css";
 import Topbar from "../../Components/Topbar/Topbar";
-import Conversation from "../../Components/Conversation/Conversation";
+import Discussion from "../../Components/Discussion/Disccussion";
 import Message from "../../Components/Message/Message";
 import PeopleOnline from "../../Components/PeopleOnline/PeopleOnline";
 import { useContext, useEffect, useRef, useState } from "react";
@@ -109,7 +109,7 @@ export default function Messenger() {
             <input placeholder="Search for friends" className="chatMenuInput" />
             {conversations.map((c) => (
               <div onClick={() => setCurrentChat(c)}>
-                <Conversation conversation={c} currentUser={user} />
+                <Discussion discussion={c} currentUser={user} />
               </div>
             ))}
           </div>
@@ -139,7 +139,7 @@ export default function Messenger() {
               </>
             ) : (
               <span className="noConversationText">
-                Open a conversation to start a chat.
+                Enter a conversation to start chatting.
               </span>
             )}
           </div>
