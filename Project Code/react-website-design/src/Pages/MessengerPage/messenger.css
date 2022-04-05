@@ -72,9 +72,11 @@
   
   .noConversationText {
     position: absolute;
+    text-align: center;
     top: 10%;
     font-size: 50px;
-    color: rgb(224, 220, 220);
+    font-weight: 500;
+    color:lightsteelblue;
     cursor: default;
   }
   
