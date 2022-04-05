@@ -1,4 +1,4 @@
-.discussion{
+.conversation{
     display: flex;
     align-items: center;
     padding: 10px;
@@ -6,11 +6,11 @@
     margin-top: 20px;
 }
 
-.discussion:hover{
+.conversation:hover{
     background-color: rgb(245, 243, 243);
 }
 
-.discussionImg{
+.conversationImg{
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -18,6 +18,6 @@
     margin-right: 20px;
 }
 
-.discussionName{
+.conversationName{
     font-weight: 500;
 }
