@@ -50,7 +50,7 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
 app.use("/api/users", routeUser);
 app.use("/api/auth", routeAuth);
 app.use("/api/posts", routePost);
-app.use("/api/conversations", routeConversation);
+app.use("/api/convsersations", routeConversation);
 app.use("/api/messages", routeMessage);
 
 // Connecting to the Backend Server
