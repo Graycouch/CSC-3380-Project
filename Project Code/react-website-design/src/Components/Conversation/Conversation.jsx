@@ -1,13 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import "./Discussion.css";
+import "./Conversation.css";
 
-export default function Discussion({ discussion, currentUser }) {
+export default function Conversation({ conversation, currentUser }) {
   const [user, setUser] = useState(null);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   useEffect(() => {
-    const friendId = discussion.members.find((m) => m !== currentUser._id);
+    const friendId = conversation.members.find((m) => m !== currentUser._id);
 
     const getUser = async () => {
       try {
@@ -18,12 +18,12 @@ export default function Discussion({ discussion, currentUser }) {
       }
     };
     getUser();
-  }, [currentUser, discussion]);
+  }, [currentUser, conversation]);
 
   return (
-    <div className="discussion">
+    <div className="conversation">
       <img
-        className="discussionImg"
+        className="conversationImg"
         src={
           user?.profilePicture
             ? PF + user.profilePicture
@@ -31,7 +31,7 @@ export default function Discussion({ discussion, currentUser }) {
         }
         alt=""
       />
-      <span className="discussionName">{user?.username}</span>
+      <span className="conversationName">{user?.username}</span>
     </div>
   );
 }
