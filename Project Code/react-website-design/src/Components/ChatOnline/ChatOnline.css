@@ -1,4 +1,4 @@
-.peopleOnlineFriend {
+.chatOnlineFriend {
     display: flex;
     align-items: center;
     font-weight: 500;
@@ -6,12 +6,12 @@
     margin-top: 10px;
   }
   
-  .peopleOnlineImgContainer {
+  .chatOnlineImgContainer {
     position: relative;
     margin-right: 10px;
   }
   
-  .peopleOnlineImg {
+  .chatOnlineImg {
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -19,7 +19,7 @@
     border: 1px solid white;
   }
   
-  .peopleOnlineBadge {
+  .chatOnlineBadge {
     width: 10px;
     height: 10px;
     border-radius: 50%;
@@ -30,7 +30,7 @@
   }
   
   @media screen and (max-width: 768px) {
-    .peopleOnlineName {
+    .chatOnlineName {
       display: none;
     }
   }

@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import "./PeopleOnline.css";
+import "./ChatOnline.css";
 
-export default function PeopleOnline({ onlineUsers, currentId, setCurrentChat }) {
+export default function ChatOnline({ onlineUsers, currentId, setCurrentChat }) {
   const [friends, setFriends] = useState([]);
   const [onlineFriends, setOnlineFriends] = useState([]);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -40,12 +40,12 @@ export default function PeopleOnline({ onlineUsers, currentId, setCurrentChat })
   };
 
   return (
-    <div className="peopleOnline">
+    <div className="chatOnline">
       {onlineFriends.map((o) => (
-        <div className="peopleOnlineFriend" onClick={() => handleClick(o)}>
-          <div className="peopleOnlineImgContainer">
+        <div className="chatOnlineFriend" onClick={() => handleClick(o)}>
+          <div className="chatOnlineImgContainer">
             <img
-              className="peopleOnlineImg"
+              className="chatOnlineImg"
               src={
                 o?.profilePicture
                   ? PF + o.profilePicture
@@ -53,9 +53,9 @@ export default function PeopleOnline({ onlineUsers, currentId, setCurrentChat })
               }
               alt=""
             />
-            <div className="peopleOnlineBadge"></div>
+            <div className="chatOnlineBadge"></div>
           </div>
-          <span className="peopleOnlineName">{o?.username}</span>
+          <span className="chatOnlineName">{o?.username}</span>
         </div>
       ))}
     </div>
