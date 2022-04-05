@@ -29,13 +29,13 @@ export default function ChatOnline({ onlineUsers, currentId, setCurrentChat }) {
     } catch (err) {
       console.log(err);
     } finally {
-      console.log(123);
       axios.post("/conversations",
         {
           senderId: currentId,
           receiverId: user._id
         }
       );
+      window.location.reload();
     }
   };
 
